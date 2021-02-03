@@ -1,18 +1,14 @@
 <script>
-  let name = "world"
-  let age = 85
-  function assign() {
-    name = "Heropy"
-    age = 36
-  }
+  import Router, { location } from "svelte-spa-router";
+  import Home from "./Home.svelte";
+  import Quiz from "./Quiz.svelte";
+  import Nav from "./Nav.svelte";
+  import Result from "./Result.svelte";
+
+  const routes = { "/": Home, "/quiz": Quiz, "/result": Result };
 </script>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <h2>
-    {age}
-  </h2>
-  <img src="" alt={name} />
-  <input type="text" bind:value={name} />
-  <button on:click={assign}> Assign </button>
-</main>
+<Nav />
+
+<Router {routes} />
+/#{$location}
