@@ -1,0 +1,38 @@
+<script>
+</script>
+
+<style>
+    nav {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #eee;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    nav a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav .logo {
+        width: 28px;
+        margin-right: 10px;
+    }
+
+    nav .title {
+        font-size: 20px;
+        font-weight: 700;
+        color: rgb(103, 172, 83);
+    }
+</style>
+
+<nav>
+    <a href="/">
+        <img src="/static/images/logo.jpg" alt="logo" class="logo" />
+        <h1 class="title">JavaScript TEST</h1>
+    </a>
+</nav>
