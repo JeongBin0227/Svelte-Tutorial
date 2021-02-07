@@ -1,10 +1,37 @@
 <script>
-    let name = "world";
-    let age = 85;
-    function assign() {
-        name = "Heropy";
-        age = 36;
+    import { num, addNumber } from "./store";
+
+    function selectAnswer(exampleElem) {
+        const unselectedExamples = document
+            .querySelector(".selected .example-container")
+            .querySelectorAll(
+                `.example:not([data-index="${exampleElem.target.dataset.index}"])`
+            );
+        addNumber(exampleElem.target.dataset.index);
+        unselectedExamples.forEach((example) => {
+            example.style.transform = `translateY(16px) scale(0.75)`;
+            example.style.opacity = 0;
+        });
+        setTimeout(() => {
+            num.increment();
+        }, 800);
     }
+
+    const handleClick = (exampleElem) => {
+        const unselectedExamples = document
+            .querySelector(".selected .example-container")
+            .querySelectorAll(
+                `.example:not([data-index="${exampleElem.target.dataset.index}"])`
+            );
+        addNumber(exampleElem.target.dataset.index);
+        unselectedExamples.forEach((example) => {
+            example.style.transform = `translateY(16px) scale(0.75)`;
+            example.style.opacity = 0;
+        });
+        setTimeout(() => {
+            location.href = "/#/result";
+        }, 800);
+    };
 </script>
 
 <style>
@@ -57,37 +84,92 @@
     #quiz-page .example:last-child {
         margin-bottom: 0;
     }
+    .hide {
+        display: none !important;
+    }
 </style>
 
 <main id="app">
     <div id="quiz-page">
         <div class="quiz-container">
-            <div class="quiz" data-id="1" style="opacity: 1;">
-                <div class="question">
-                    Q. 자바스크립트는 자바에서 파생된 언어이다.
-                </div>
+            <div
+                class="quiz "
+                class:hide={$num !== 1}
+                class:selected={$num === 1}
+                data-id="1"
+                style="opacity: 1;">
+                <div class="question">Q. 스벨트는 가상돔을 사용한다.</div>
                 <ul class="example-container">
-                    <li class="example" data-index="0">네</li>
-                    <li class="example" data-index="1">아니오</li>
+                    <li
+                        class="example"
+                        data-index="0"
+                        on:click={(e) => selectAnswer(e)}>
+                        YES
+                    </li>
+                    <li
+                        class="example"
+                        data-index="1"
+                        on:click={(e) => selectAnswer(e)}>
+                        NO
+                    </li>
                 </ul>
             </div>
-            <div class="quiz dp-none" data-id="2">
-                <div class="question">Q. 자바스크립트가 해당하는 것은?</div>
-                <ul class="example-container">
-                    <li class="example" data-index="0">프로토타입 기반 언어</li>
-                    <li class="example" data-index="1">클래스 기반 언어</li>
-                    <li class="example" data-index="2">변수 기반 언어</li>
-                </ul>
-            </div>
-            <div class="quiz dp-none" data-id="3">
+            <div
+                class="quiz dp-none hidden"
+                class:hide={$num !== 2}
+                class:selected={$num === 2}
+                data-id="2">
                 <div class="question">
-                    Q. 다음 중 자바스크립트 변수 선언 방법이 아닌 것은?
+                    Q. 스벨트의 스토어에서 가져온 데이터를 사용 하는 방법은?
                 </div>
                 <ul class="example-container">
-                    <li class="example" data-index="0">const</li>
-                    <li class="example" data-index="1">let</li>
-                    <li class="example" data-index="2">var</li>
-                    <li class="example" data-index="3">int</li>
+                    <li
+                        class="example"
+                        data-index="0"
+                        on:click={(e) => selectAnswer(e)}>
+                        {@html '{data}'}
+                    </li>
+                    <li
+                        class="example"
+                        data-index="1"
+                        on:click={(e) => selectAnswer(e)}>
+                        {@html '{$data}'}
+                    </li>
+                    <li
+                        class="example"
+                        data-index="2"
+                        on:click={(e) => selectAnswer(e)}>
+                        {@html '{#data}'}
+                    </li>
+                </ul>
+            </div>
+            <div
+                class="quiz dp-none hidden"
+                class:hide={$num !== 3}
+                class:selected={$num === 3}
+                data-id="3">
+                <div class="question">
+                    Q. 스벨트에서 분기를 사용하는 방법은??
+                </div>
+                <ul class="example-container">
+                    <li
+                        class="example"
+                        data-index="0"
+                        on:click={(e) => handleClick(e)}>
+                        {@html '{#if ~~~}'}
+                    </li>
+                    <li
+                        class="example"
+                        data-index="1"
+                        on:click={(e) => handleClick(e)}>
+                        {@html '{$if ~~~}'}
+                    </li>
+                    <li
+                        class="example"
+                        data-index="2"
+                        on:click={(e) => handleClick(e)}>
+                        {@html '{if ~~~}'}
+                    </li>
                 </ul>
             </div>
         </div>
