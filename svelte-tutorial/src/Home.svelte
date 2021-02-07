@@ -1,10 +1,7 @@
 <script>
-    let name = "world";
-    let age = 85;
-    function assign() {
-        name = "Heropy";
-        age = 36;
-    }
+    const handleClick = () => {
+        location.href = "/#/quiz";
+    };
 </script>
 
 <style>
@@ -47,7 +44,7 @@
 
 <main id="app">
     <div id="start-page">
-        <h1 class="title">🎊 Welcome To JavaScript Test ✍️</h1>
-        <button class="start-btn">START</button>
+        <h1 class="title">🎊 Welcome To Svelte Test ✍️</h1>
+        <button class="start-btn" on:click|once={handleClick}>START</button>
     </div>
 </main>
