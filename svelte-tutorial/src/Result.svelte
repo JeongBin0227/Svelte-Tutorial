@@ -1,4 +1,9 @@
 <script>
+    import { answer, userAnswer, quizList } from "./store";
+
+    const goHome = () => {
+        location.href = "/";
+    };
 </script>
 
 <style>
@@ -93,6 +98,10 @@
     #result-page .restart-btn:hover {
         background-color: #027368;
     }
+
+    .hide {
+        display: none;
+    }
 </style>
 
 <div id="result-page">
@@ -100,29 +109,66 @@
         <h1 class="title">Result 🐙</h1>
         <div class="result-container">
             <div class="result">
-                <div class="result-icon correct">👍 Excellent!</div>
+                <div
+                    class="result-icon"
+                    class:correct={$answer[0] === userAnswer[0]}
+                    class:incorrect={$answer[0] !== userAnswer[0]}>
+                    {$answer[0] === userAnswer[0] ? '👍 Excellent!' : '🤦‍♂️ No...'}
+                </div>
                 <div class="question">
                     Q. 자바스크립트는 자바에서 파생된 언어이다.
                 </div>
-                <div class="user-answer">A. 아니오</div>
+                <div class="user-answer">
+                    A.
+                    {quizList[0].examples[userAnswer[0]].title}
+                </div>
+                <div
+                    class="correct-answer"
+                    class:hide={$answer[0] === userAnswer[0]}>
+                    Right Answer. No
+                </div>
             </div>
             <div class="result">
-                <div class="result-icon incorrect">🤦&zwj;♂️ No...</div>
+                <div
+                    class="result-icon"
+                    class:correct={$answer[1] === userAnswer[1]}
+                    class:incorrect={$answer[1] !== userAnswer[1]}>
+                    {$answer[1] === userAnswer[1] ? '👍 Excellent!' : '🤦‍♂️ No...'}
+                </div>
                 <div class="question">Q. 자바스크립트가 해당하는 것은?</div>
-                <div class="user-answer">A. 클래스 기반 언어</div>
-                <div class="correct-answer">
-                    Right Answer. 프로토타입 기반 언어
+                <div class="user-answer">
+                    A.
+                    {quizList[1].examples[userAnswer[1]].title}
+                </div>
+                <div
+                    class="correct-answer"
+                    class:hide={$answer[1] === userAnswer[1]}>
+                    Right Answer.
+                    {@html '{$data}'}
                 </div>
             </div>
             <div class="result">
-                <div class="result-icon incorrect">🤦&zwj;♂️ No...</div>
-                <div class="question">
-                    Q. 다음 중 자바스크립트 변수 선언 방법이 아닌 것은?
+                <div
+                    class="result-icon"
+                    class:correct={$answer[2] === userAnswer[2]}
+                    class:incorrect={$answer[2] !== userAnswer[2]}>
+                    {$answer[2] === userAnswer[2] ? '👍 Excellent!' : '🤦‍♂️ No...'}
+                    <div class="question">
+                        Q. 다음 중 자바스크립트 변수 선언 방법이 아닌 것은?
+                    </div>
+                    <div class="user-answer">
+                        A.
+                        {quizList[2].examples[userAnswer[2]].title}
+                    </div>
+                    <div
+                        class="correct-answer"
+                        class:hide={$answer[2] === userAnswer[2]}>
+                        Right Answer.
+                        {@html '{#if ~~~}'}
+                    </div>
                 </div>
-                <div class="user-answer">A. const</div>
-                <div class="correct-answer">Right Answer. int</div>
             </div>
         </div>
-        <button class="restart-btn">RESTART</button>
+        <button class="restart-btn" on:click={goHome}>RESTART</button>
     </div>
 </div>
