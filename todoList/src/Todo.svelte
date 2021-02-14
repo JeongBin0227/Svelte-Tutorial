@@ -13,7 +13,7 @@
     }
 
     function deleteTodo() {
-        $todos = $todos.filter((todo) => todo.id !== todo.id);
+        $todos = $todos.filter((t) => t.id !== todo.id);
     }
 
     function updateTodo() {
@@ -30,13 +30,13 @@
             on:keydown={(e) => {
                 e.key === 'Enter' && updateTodo();
             }} />
-        <button onclick={updateTodo}>ok</button><button
-            onclick={offEdit}>Delete</button>
+        <button on:click={updateTodo}>ok</button><button
+            on:click={offEdit}>Delete</button>
     </div>
 {:else}
     <div>
         {todo.title}
-        <button onclick={onEdit}>Edit</button>
-        <button onclick={deleteTodo}>Delete</button>
+        <button on:click={onEdit}>Edit</button>
+        <button on:click={deleteTodo}>Delete</button>
     </div>
 {/if}

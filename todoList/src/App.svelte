@@ -10,7 +10,7 @@
 			title = "";
 			return;
 		}
-		todos.push({
+		$todos.push({
 			id,
 			title,
 		});
@@ -26,8 +26,8 @@
 	on:keydown={(e) => {
 		e.key === 'Enter' && createTodo();
 	}} />
-<button onclick={createTodo}> Create Todo </button>
+<button on:click={createTodo}> Create Todo </button>
 
-{#each todos as todo}
+{#each $todos as todo}
 	<Todo {todo} {todos} />
 {/each}
