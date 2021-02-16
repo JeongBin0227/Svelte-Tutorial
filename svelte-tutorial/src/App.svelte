@@ -11,4 +11,3 @@
 <Nav />
 
 <Router {routes} />
-/#{$location}

@@ -33,6 +33,6 @@
 <nav>
     <a href="/">
         <img src="./sixshop-symbol.png" alt="logo" class="logo" />
-        <h1 class="title">Bulkman TEST</h1>
+        <h1 class="title">Svelte TEST</h1>
     </a>
 </nav>
