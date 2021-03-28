@@ -1,5 +1,6 @@
 <script>
 	import Something from './Something.svelte'
+	import Anytihng from './Anything.svelte'
 	let toggle  = false
 </script>
 
@@ -7,6 +8,10 @@
 	Toggle
 </button>
 
-{#if toggle}
+<!-- {#if toggle}
 	<Something/>
+{/if} -->
+
+{#if toggle}
+	<Anytihng/>
 {/if}
